@@ -155,28 +155,6 @@ def ass3(listofstr):
                 l2.append(x[y])
         print(l2)
 
-
-def ass4():
-    projects = []
-    roles = []
-    employees = []
-
-    for x in lot:
-        if x[0] not in projects:
-            projects.append(x[0])
-    for x in lot:
-        if x[1] not in roles:
-            roles.append(x[1])
-    for x in lot:
-        if x[2] not in employees:
-            employees.append(x[2])
-
-    for x in projects:
-        for y in roles:
-            for z in employees:
-                for f in lot:
-                    if f[0] = x and f[1] = y and f[2]= z:
-
-
+ass3(listofstr)
 
 
