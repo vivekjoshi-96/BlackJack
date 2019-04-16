@@ -103,12 +103,6 @@ listofstr= [
  'Netti Shepland'
 ]
 
-lot=[('project_1', 'developer', 'employee_1'),
-     ('project_1', 'developer', 'employee_4'),
-     ('project_1', 'qa', 'employee_3'),
-     ('project_2', 'developer', 'employee_6'),
-     ('project_2', 'qa', 'employee_2'),
-     ('project_3', 'developer', 'employee_5'),]
 
 
 
@@ -155,6 +149,14 @@ def ass3(listofstr):
                 l2.append(x[y])
         print(l2)
 
-ass3(listofstr)
+def ass4(lot):
+    output={}
+    for project, role, emp in lot:
+        prj_details = output.get(project, {})
+        emp_list = prj_details.get(role, [])
+        emp_list.append(emp)
+        prj_details.update({role: emp_list})
+        output[project] = prj_details
 
+    print(output)
 
