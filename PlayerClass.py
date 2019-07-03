@@ -15,13 +15,12 @@ class Player:
         self.player_hand.append(DeckClass.Deck.deck.pop(-1))
         self.player_hand.append(DeckClass.Deck.deck.pop(-1))
         self.player_hand.sort(reverse=True)
-        self.add()
-        self.show()
 
     def show(self):
         print("your cards are")
         for i in range(len(self.player_hand)):
             print(self.player_hand[i][0], "of", self.player_hand[i][1], end='\n')
+        self.add()
         print("and points are:" + str(self.total))
 
     def add(self):

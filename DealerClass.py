@@ -46,4 +46,5 @@ class Dealer:
         print("dealer's cards are")
         for i in range(len(self.dealer_hand)):
             print(self.dealer_hand[i][0], "of", self.dealer_hand[i][1], end='\n')
+
         print("and points are:" + str(self.total))

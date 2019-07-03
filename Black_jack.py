@@ -15,6 +15,7 @@ def gameplay():
             for active_player in player_objects:
                 if active_player.bust is False and active_player.final is False:
                     print(active_player.name + '\'s  turn')
+                    active_player.show()
                     choice = int(input("enter 1 to hit or 2 to stay"))
                     if choice == 1:
                         active_player.hit()
