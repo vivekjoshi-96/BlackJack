@@ -1,7 +1,7 @@
 from PythonTrack import DeckClass
 
 
-class Player():
+class Player:
     def __init__(self,  name):
         self.name = name
         self.player_hand = []
@@ -9,6 +9,7 @@ class Player():
         self.deal()
         self.bust = False
         self.black_jack = False
+        self.final = False
 
     def deal(self):
         self.player_hand.append(DeckClass.Deck.deck.pop(-1))
@@ -41,3 +42,6 @@ class Player():
         self.player_hand.append(DeckClass.Deck.deck.pop(-1))
         self.player_hand.sort(reverse=True)
         self.add()
+
+    def stay(self):
+        self.final = True

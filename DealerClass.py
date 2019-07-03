@@ -8,6 +8,7 @@ class DealerCass:
         self.black_jack = False
         self.dealer_hand = []
         self.total = 0
+        self.final = False
         self.deal()
 
     def hit(self):
