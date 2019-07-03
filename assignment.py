@@ -157,6 +157,8 @@ def ass4(lot):
         emp_list.append(emp)
         prj_details.update({role: emp_list})
         output[project] = prj_details
-
     print(output)
 
+ass1()
+ass2()
+ass3()
