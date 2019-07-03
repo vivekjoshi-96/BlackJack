@@ -3,7 +3,7 @@ from PythonTrack import DeckClass
 
 class Player():
     def __init__(self):
-        #self.name = name
+        self.name = name
         self.player_hand = []
         self.total = 0
         self.deal()
@@ -11,8 +11,8 @@ class Player():
 
     def deal(self):
         self.player_hand.append(DeckClass.Deck.deck.pop(-1))
-        self.player_hand.append(DeckClass.Deck.deck[-1])
-        self.player_hand.sort(reverse = True)
+        self.player_hand.append(DeckClass.Deck.deck.pop(-1))
+        self.player_hand.sort(reverse=True)
         self.add()
         self.show()
 
