@@ -1,7 +1,7 @@
 from PythonTrack import DeckClass
 
 
-class DealerCass:
+class Dealer:
     def __init__(self):
         self.name = 'dealer'
         self.bust = False
@@ -15,7 +15,6 @@ class DealerCass:
         while self.total < 17:
             self.dealer_hand.append(DeckClass.Deck.deck.pop(-1))
             self.dealer_hand.sort(reverse=True)
-            self.total = 0
             self.add()
         print("your cards are")
         for i in range(len(self.dealer_hand)):
@@ -30,11 +29,11 @@ class DealerCass:
         self.dealer_hand.append(DeckClass.Deck.deck.pop(-1))
         self.dealer_hand.append(DeckClass.Deck.deck.pop(-1))
         self.dealer_hand.sort(reverse=True)
-        self.total = 0
         self.add()
         self.hit()
 
     def add(self):
+        self.total = 0
         for i in range(len(self.dealer_hand)):
             value = self.dealer_hand[i][0]
             if value > 10:
@@ -43,5 +42,8 @@ class DealerCass:
                 value = 11
             self.total += value
 
-
-DealerCass()
+    def show(self):
+        print("dealer's cards are")
+        for i in range(len(self.dealer_hand)):
+            print(self.dealer_hand[i][0], "of", self.dealer_hand[i][1], end='\n')
+        print("and points are:" + str(self.total))
