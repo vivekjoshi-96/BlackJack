@@ -1,8 +1,9 @@
 from PythonTrack import PlayerClass
+from PythonTrack import DealerClass
 
 
-def main():
-    #code to choose no of players and deal cards to them
+def gameplay():
+    # code to choose no of players and deal cards to them
     nop = int(input("Enter the number of players"))
     if nop >= 1:
         player_objects = []
@@ -23,10 +24,33 @@ def main():
                     if choice == 2:
                         active_player.stay()
                         eliminated_players = eliminated_players+1
+        dealer_object=[]
+        dealer_object.append(DealerClass.Dealer())
+        while True:
+            leader = ''
+            for dealer in dealer_object:
+                if dealer.black_jack is True:
+                    print("Dealer wins")
+            for player in player_objects:
+                for dealer in dealer_object:
+                    if player.bust is False:
+                        if player.black_jack is True:
+                            print(player.name + 'won', end='\n')
+                        if player.total > dealer.total or dealer.bust is True:
+                            print(player.name + ' is in the lead', end='\n')
+                            leader = player.name
+            for dealer in dealer_object:
+                dealer.show()
+            if leader == '':
+                print("Dealer won")
+            else:
+                print(leader + ' won', end='\n')
+                break
+            break
 
     else:
         print("invalid input")
 
 
 if __name__ == '__main__':
-    main()
+    gameplay()
