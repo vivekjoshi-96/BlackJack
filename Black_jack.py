@@ -3,6 +3,7 @@ from PythonTrack import DealerClass
 
 
 def gameplay():
+    leader_score = 0
     # code to choose no of players and deal cards to them
     nop = int(input("Enter the number of players"))
     if nop >= 1:
@@ -26,6 +27,8 @@ def gameplay():
                         eliminated_players = eliminated_players+1
         dealer_object=[]
         dealer_object.append(DealerClass.Dealer())
+        for dealer in dealer_object:
+            dealer.show()
         while True:
             leader = ''
             for dealer in dealer_object:
@@ -36,18 +39,17 @@ def gameplay():
                     if player.bust is False:
                         if player.black_jack is True:
                             print(player.name + 'won', end='\n')
-                        if player.total > dealer.total or dealer.bust is True:
+                        leader_score = dealer.total
+                        if player.total > leader_score or dealer.bust is True:
                             print(player.name + ' is in the lead', end='\n')
+                            leader_score = player.total
                             leader = player.name
-            for dealer in dealer_object:
-                dealer.show()
             if leader == '':
                 print("Dealer won")
             else:
                 print(leader + ' won', end='\n')
                 break
             break
-
     else:
         print("invalid input")
 
