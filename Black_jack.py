@@ -39,7 +39,8 @@ def gameplay():
                 for dealer in dealer_object:
                     if player.bust is False:
                         if player.black_jack is True:
-                            print(player.name + 'won', end='\n')
+                            print(player.name + ' won', end='\n')
+                            exit()
                         if player.total == leader_score:
                             game_tied = True
                         if player.total > leader_score or dealer.bust is True:
