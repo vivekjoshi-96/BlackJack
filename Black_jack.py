@@ -3,8 +3,8 @@ from PythonTrack import DealerClass
 
 
 def gameplay():
+    game_tied = False
     leader_score = 0
-    # code to choose no of players and deal cards to them
     nop = int(input("Enter the number of players"))
     if nop >= 1:
         player_objects = []
@@ -25,10 +25,11 @@ def gameplay():
                     if choice == 2:
                         active_player.stay()
                         eliminated_players = eliminated_players+1
-        dealer_object=[]
+        dealer_object = []
         dealer_object.append(DealerClass.Dealer())
         for dealer in dealer_object:
             dealer.show()
+            leader_score = dealer.total
         while True:
             leader = ''
             for dealer in dealer_object:
@@ -39,15 +40,20 @@ def gameplay():
                     if player.bust is False:
                         if player.black_jack is True:
                             print(player.name + 'won', end='\n')
-                        leader_score = dealer.total
+                        if player.total == leader_score:
+                            game_tied = True
                         if player.total > leader_score or dealer.bust is True:
                             print(player.name + ' is in the lead', end='\n')
                             leader_score = player.total
+                            game_tied = False
                             leader = player.name
             if leader == '':
                 print("Dealer won")
             else:
-                print(leader + ' won', end='\n')
+                if game_tied is False:
+                    print(leader + ' won', end='\n')
+                if game_tied is True:
+                    print('There was a tie', end='\n')
                 break
             break
     else:

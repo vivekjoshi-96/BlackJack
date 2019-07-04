@@ -16,10 +16,6 @@ class Dealer:
             self.dealer_hand.append(DeckClass.Deck.deck.pop(-1))
             self.dealer_hand.sort(reverse=True)
             self.add()
-        print("your cards are")
-        for i in range(len(self.dealer_hand)):
-            print(self.dealer_hand[i][0], "of", self.dealer_hand[i][1], end='\n')
-        print("and points are:" + str(self.total))
         if self.total>21:
             self.bust=True
         if len(self.dealer_hand) == 2 and self.total == 21:
