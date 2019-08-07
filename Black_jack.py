@@ -39,6 +39,8 @@ def gameplay():
                         eliminated_players = eliminated_players + 1
         dealer.show()
         dealer.add()
+        while dealer.bust is False and dealer.final is False:
+            dealer.hit(shoe.pop(-1))
         while True:
             if dealer.black_jack is True:
                 print("Dealer wins")
