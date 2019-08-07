@@ -18,6 +18,8 @@ class Player:
         for i in range(len(self.player_hand)):
             print(self.player_hand[i][0], "of", self.player_hand[i][1], end='\n')
         self.add()
+        if self.total > 21:
+            self.bust = True
         print("and points are:" + str(self.total))
 
     def add(self):

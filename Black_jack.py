@@ -2,6 +2,7 @@ from PythonTrack import PlayerClass
 from PythonTrack import DealerClass
 from PythonTrack import DeckClass
 
+
 def gameplay():
     nop = int(input("Enter the number of players"))
     if nop >= 1:
@@ -22,7 +23,7 @@ def gameplay():
         eliminated_players = 0
         while eliminated_players < len(player_objects):
             for active_player in player_objects:
-                if active_player.bust is False and active_player.final is False:
+                while active_player.bust is False and active_player.final is False:
                     print(active_player.name + '\'s  turn', end='\n')
                     active_player.show()
                     dealer.show_single_card()
@@ -32,10 +33,10 @@ def gameplay():
                         active_player.hit(card)
                         active_player.show()
                         if active_player.bust is True:
-                            eliminated_players = eliminated_players+1
+                            eliminated_players = eliminated_players + 1
                     if choice == 2:
                         active_player.stay()
-                        eliminated_players = eliminated_players+1
+                        eliminated_players = eliminated_players + 1
         dealer.show()
         dealer.add()
         while True:
