@@ -1,19 +1,16 @@
-from PythonTrack import DeckClass
-
-
 class Player:
-    def __init__(self,  name):
+    def __init__(self,  name, card1, card2):
         self.name = name
         self.player_hand = []
         self.total = 0
-        self.deal()
+        self.deal(card1, card2)
         self.bust = False
         self.black_jack = False
         self.final = False
 
-    def deal(self):
-        self.player_hand.append(DeckClass.Deck.deck.pop(-1))
-        self.player_hand.append(DeckClass.Deck.deck.pop(-1))
+    def deal(self, card1, card2):
+        self.player_hand.append(card1)
+        self.player_hand.append(card2)
         self.player_hand.sort(reverse=True)
 
     def show(self):
@@ -37,10 +34,9 @@ class Player:
         if self.total == 21 and len(self.player_hand) == 2:
             self.black_jack = True
 
-    def hit(self):
-        self.player_hand.append(DeckClass.Deck.deck.pop(-1))
+    def hit(self, card):
+        self.player_hand.append(card)
         self.player_hand.sort(reverse=True)
-        self.add()
 
     def stay(self):
         self.final = True
