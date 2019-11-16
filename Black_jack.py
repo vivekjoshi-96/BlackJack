@@ -7,10 +7,9 @@ def gameplay():
     nop = int(input("Enter the number of players"))
     if nop >= 1:
         nod = int(input("Enter the number of decks"))
-        shoe = []
         cards = DeckClass.Deck(nod)
-        deck = cards.shoe
-        shoe = shoe + deck
+        shoe = cards.shoe
+        print(shoe)
         card1 = shoe.pop(-1)
         card2 = shoe.pop(-1)
         dealer = DealerClass.Dealer(card1, card2)
@@ -39,22 +38,23 @@ def gameplay():
                         eliminated_players = eliminated_players + 1
         dealer.show()
         dealer.add()
-        while dealer.bust is False and dealer.final is False:
+        while dealer.bust is False and dealer.final is False and dealer.total < 17:
             dealer.hit(shoe.pop(-1))
-        while True:
-            if dealer.black_jack is True:
-                print("Dealer wins")
-                exit()
-            for player in player_objects:
-                if player.bust is False:
-                    if player.black_jack is True:
-                        print(player.name + ' won', end='\n')
-                    elif player.total == dealer.total:
-                        print("Hand tied", end='\n')
-                    elif player.total > dealer.total or dealer.bust is True:
-                        print(player.name + 'won', end='\n')
-                    else:
-                        print("Dealer won")
+            dealer.show()
+            dealer.add()
+        if dealer.black_jack is True:
+            print("Dealer wins")
+            exit()
+        for player in player_objects:
+            if player.bust is False:
+                if player.black_jack is True:
+                    print(player.name + 'won', end='\n')
+                elif player.total == dealer.total:
+                    print("Hand tied for" + player.name, end='\n')
+                elif player.total > dealer.total or dealer.bust is True:
+                    print(player.name + 'won', end='\n')
+                else:
+                    print("Dealer won")
     else:
         print("invalid input")
 

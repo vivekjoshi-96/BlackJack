@@ -14,5 +14,3 @@ class Deck:
             decks = decks + deck
         random.shuffle(decks)
         return decks
-
-
